@@ -1,0 +1,737 @@
+:root { /* Global color and shadow variables */
+  --card-bg: #ffffff;
+  --border-color: #cce0f5;
+  --modal-animation: fade-in 0.3s ease-out;
+  --primary-color: #00796b; 
+  --background-color: #dfedee; 
+  --select-border: 1px solid #b2dfdb;
+  --tag-background: #daeae8;
+  --input-background-color: #f9fdfd;
+}
+
+body { /* Set up body style */
+  font-family: "Rubik", sans-serif;
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-Wrapper { /* Wrapper for full page layout */
+  display: flex;
+   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-header { /* Top sticky header bar */
+  display: flex;
+  align-items: center; 
+  background: var(--primary-color);
+  color: white;
+  padding: 0 1em; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.header-container { /* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo-with-text { /* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.site-logo { /* Set the logo image height */
+  height: 60px;
+}
+
+.site-title { /* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check { /* Highlighted part of the site title ("Check") */
+  color: #cbe4ff;
+  font-weight: bold;
+}
+
+.nav-left ul { /* Layout for the top navigation menu list */
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left a { /* Top menu links style */
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover { /* Change link color on hover */
+  color: #cbe4ff;
+}
+
+.nav-left a.active::after { /* Underline for active nav link */
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #cbe4ff;
+}
+
+.disconnection { /* "Logout" button (התנתק) style */
+  font: inherit;
+  background: none;
+  border: 1px solid white;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.disconnection:hover { /* Hover effect for the logout button */
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.hamburger { /* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.controls { /* Container for the filter and control elements at the top */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  background: white;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.controls > div { /* Styles only direct child divs of controls  */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls input, .controls select, .controls button {/* Style inputs, selects, and buttons inside .controls */
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.score-item { /* Layout for each score item */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#filter-options { /* Dropdown box for advanced filter options */
+  position: absolute;
+  top: 2.5em;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 1em;
+  padding-top: 0;
+  z-index: 100;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  animation: fade-in 0.3s ease-in-out;
+  width: max-content;
+  max-width: 90vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.05);
+  margin-top: 0.4em;
+}
+
+#filter-options.hidden { /* Hides the filter dropdown when needed */
+  display: none !important;
+}
+
+#filter-options label { /* Labels inside the filter dropdown */
+  font-size: 0.95rem;
+  padding-top: 10px;
+}
+
+.course-grid { /* Grid layout for displaying course cards responsively */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+  padding: 1em;
+}
+
+.course-card { /* Styles for individual course cards */
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.course-card:hover { /* Slightly lift the course card on hover */
+  transform: translateY(-3px);
+}
+
+.required-star { /* Red star for required fields */
+  color: red;
+  margin-right: 4px;
+  font-weight: normal;
+}
+
+.tags { /* Adds space above the tags section */
+  margin-top: 0.5em;
+}
+
+.tag { /* Styles individual tag elements */
+  background: var(--tag-background);
+  border-radius: 20px;
+  padding: 0.3em 0.8em;
+  margin-left: 0.5em;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.edit-course { /* Edit button positioned inside each course card */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.modal { /* Fullscreen modal container (popup) centered on screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal.hidden { /* Hides the modal (popup) when the "hidden" class is applied */
+  display: none;
+}
+
+.modal-content { /* Styles the visible content area inside the modal (popup) */
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2100;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: var(--modal-animation);
+  margin: 1em;
+}
+
+@keyframes fade-in { /* Defines  animation for modals and dropdowns */
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-modal { /* Close button (X) for modal (popup) */
+  position: absolute;
+  top: 10px;
+  left: 10px; 
+  right: auto;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #b1b1b1; 
+  line-height: 1;
+  z-index: 9999;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-modal:hover { /* Hover effect for the modal close (X) button – changes color for feedback */
+  background: none; 
+  color: #824141;
+}
+
+
+input, select { /* Style for all input and select elements */
+  padding: 12px;
+  font-size: 16px;
+  border: var(--select-border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: var(--input-background-color);
+}
+
+input:focus, select:focus { /* Style for input and select focus state */
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+.custom-multiselect.active { /* Highlight active multiselect dropdown */
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+.footer { /* Footer container at the bottom of the page */
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content { /* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+
+@media (max-width: 768px) { /* Responsive styles for mobile screens (≤768px) */
+  .hamburger {
+    display: block;
+  }
+
+  .nav-left {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(0.42, 0, 0.58, 1),
+      transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 2000;
+  }
+
+  .nav-left.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scaleY(1);
+  }
+
+  .nav-left ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .controls {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-summary {
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+  }
+}
+
+.active { /* Style for active navigation link */
+  text-decoration: none;
+}
+
+.course-summary { /* Layout for course summary */
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  font-size: 0.95rem;
+}
+
+.course-summary span { /* Styling text inside summary items */
+  line-height: 1.6;
+  text-align: right;
+}
+
+.divider { /* Vertical divider line between elements */
+  width: 1px;
+  background-color: #999;
+  align-self: stretch;
+  min-height: 2em;
+}
+
+* { /* Use border-box for consistent element sizing */
+  box-sizing: border-box;
+}
+
+label { /* Arrange label text above the input */
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.6em;
+  gap: 0.5em;
+}
+
+select, .course-modal.select { /* Add custom dropdown arrow icon to select elements */
+  /* Add a down arrow icon to the select element using inline SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 0.75rem center;
+  background-size: 12px 8px;
+  padding-left: 2.5em;
+}
+
+.modal { /* Fullscreen modal container (popup) centered on screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal.hidden { /* Hides the modal (popup) when the "hidden" class is applied */
+  display: none;
+}
+
+.modal-overlay { /* Dark semi-transparent background overlay behind the modal */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+}
+
+.modal-content { /* Styles the visible content area inside the modal (popup) */
+  position: relative;
+  z-index: 2100;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 2em;
+  width: 90%;
+  max-width: 750px;
+  max-height: 80%;
+  overflow-y: auto;
+  animation: var(--modal-animation);
+}
+
+.divider1 { /* Horizontal divider line between form sections */
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 1.3em 0;
+}
+
+.grid-2 { /* Two side-by-side fields, aligned to bottom */
+  display: flex;
+  align-items: end;
+  gap: 1.5em;
+}
+
+.binary-label { /* Styling for the binary bonus checkbox and label */
+  display: inline-flex;
+  padding: 0.75em 0.8em;
+  border: var(--select-border);
+  background-color: var(--input-background-color);
+  border-radius: 6px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end; /* מצמיד לצד שמאל של השורה */
+  gap: 0.5em;
+  font-size: 0.95rem;
+  font-weight: 100;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.binary-label:hover { /* Highlight binary bonus label on hover */
+  background-color: #d4e3e3;
+}
+
+.align-left { /* flex container aligned to the start */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.grid-3 { /* responsive 3-column grid layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1.2em;
+}
+
+.selected-tags { /* styling for selected tag text */
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.checkbox-list { /* dropdown container for multiselect checkboxes */
+  position: absolute;
+  inset-inline-start: 0;
+  top: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5em;
+  margin-top: 0.2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 100%;
+}
+
+.checkbox-list.hidden { /* hides the checkbox list when not active */
+  display: none;
+}
+
+.checkbox-list label { /* styles each label in the checkbox list */
+  display: block;
+  padding: 0.3em 0;
+  font-size: 0.9rem;
+}
+
+.components-header { /* header layout: title right, button left */ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6em;
+  flex-direction: row-reverse; 
+}
+
+#add-component { /* styled "add component" button */
+  font-size: 0.95rem;
+  padding: 0.3em 0.9em;
+  border: 1px solid var(--primary-color);
+  background: #fff;
+  color: var(--primary-color);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#add-component:hover { /* hover effect for the button */
+  background-color: #f3f3f3;
+  box-shadow: 0 0 10px rgba(1, 0, 0, 0.1);
+}
+
+#components-container { /* adds spacing above the list of grade components */
+  margin-top: 1em;
+}
+
+.component-head-row { /* layout for the header row of grade components table */
+  display: grid;
+  grid-template-columns: 1fr 100px 100px 40px;
+  gap: 0.7em;
+  font-weight: 700;
+  padding: 0.4em 0.7em;
+}
+
+.component-row { /* Layout for each grade component row */
+  display: grid;
+  grid-template-columns: 1fr 100px 100px 40px;
+  gap: 0.7em;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 0.9em;
+}
+
+.component-row:not(:last-child) { /* Adds spacing between component rows, except the last one */
+  margin-bottom: 0.9em;
+}
+.component-row button {/* Style for buttons inside a component row */
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.locked { /* Makes an element look disabled and prevents any interaction */
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.weight-warning { /* Warning displayed when total component weights are invalid */
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  background: #fff8db;
+  color: #cc6d00;
+  padding: 0.65em 1.1em;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 0.8em;
+}
+
+.weight-warning.hidden { /* Hide the warning when not needed */
+  display: none;
+}
+
+.weighted-result { /* Weighted grade display (final calculated score) */
+  display: block;
+  margin-top: 0.6em;
+  font-weight: 700;
+  text-align: left;
+}
+
+.weighted-result.hidden { /* Hidden state for weighted grade display */
+  display: none;
+}
+
+.actions { /* Container for action buttons */
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.primary { /* Primary button styling */
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6em 1.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary:hover { /* Darker background on hover for visual feedback */
+  background: #004d40;
+}
+
+.component-head.hidden { /* Hides the component section header when not needed */
+  display: none;
+}
+
+select { /* Custom styling for select dropdowns with a custom arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath fill='gray' d='M7 10L0 0h14z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  padding-left: 2em; /* כדי שיהיה רווח לפני החץ */
+  background-position: left 0.75rem center;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.filter-wrapper { /* Wrapper for the filter dropdown; used to position inner elements absolutely */
+  position: relative;
+}
+
+.custom-multiselect { /* Interactive container for custom multiselect dropdown */
+  font-size: 16px;
+  border: var(--select-border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: var(--input-background-color);
+  cursor: pointer;
+  position: relative;
+  min-height: 46px;
+  padding: 0.5em 0.8em;
+  display: flex;
+  align-items: center;
+}
+
+.comp-field { /* Vertical layout for component fields */
+  display: flex;
+  flex-direction: column;
+}
+
+.comp-field > label { /* Subtle label styling inside a component field */
+  font-weight: 100;
+  color: #999;
+}
+
+.comp-type, .comp-weight, .comp-grade { /* Adds top spacing between component input fields */
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) { /* Responsive styles for mobile screens (≤768px) */
+  .component-row {
+    grid-template-columns: 1fr;
+  }
+
+  .del-row {
+    order: -1;
+    justify-self: end; /* כדי שה-X יהיה בצד ימין במסכים RTL */
+  }
+}
+
+.controls button { /* Basic style for buttons inside the controls section */
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.controls button:hover { /* Hover effect for control buttons */
+  box-shadow: 0 0 10px rgba(1, 0, 0, 0.1);
+}
+
+@keyframes fadeIn { /* Animation for fade-in effect from top */
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in { /* Applies fadeIn animation to elements with .fade-in */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.bonus-wrapper, .nakaz-wrapper, #final-grade { /* Limit max width to 100px for bonus */
+  max-width: 100px;
+}

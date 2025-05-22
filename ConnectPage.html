@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>התחברות - ציוןCheck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ConnectPage.css"> <!-- קובץ העיצוב של עמוד ההתחברות -->
+</head>
+
+<body>
+  <!-- ===== Main Header Section ===== -->
+  <header class="main-header">
+    <div class="header-container">
+      <button class="hamburger" id="hamburger-btn">☰</button>
+      <div class="logo-with-text">
+        <img src="./img/logo.png" alt=" ציוןCheck" class="site-logo" />
+        <span class="site-title">ציון<span class="highlight-check">Check</span></span>
+      </div>
+        <!-- Main navigation menu -->
+      <nav class="nav-left" id="nav-menu">
+        <ul>
+          <li><a href="#" class="active">התחברות לאתר</a></li>
+          <li><a href="Index.html">דף הבית</a></li>
+        </ul>
+      </nav>
+
+      </ul>
+         <!-- Mobile spacers for responsive layout -->
+      <div class="mobile-spacer"></div>
+      <div class="mobile-spacer"></div>
+    </div>
+  </header>
+  <!-- ===== Login Form Section ===== -->
+  <main>
+    <div class="login-container">
+      <h1>התחברות לאתר</h1>
+      <form>
+           <!-- Email input field -->
+        <div class="form-group">
+          <label for="email">אימייל</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+          <!-- Password input field -->
+        <div class="form-group">
+          <label for="password">סיסמה</label>
+          <input type="password" id="password" name="password" minlength="6" required>
+        </div>
+           <!-- Login button -->
+        <button type="submit" class="login-btn">התחברות</button>
+           <!-- Forgot password link -->
+        <a href="#" class="forgot">שכחת סיסמה?</a>
+      </form>
+    </div>
+  </main>
+    <!-- ===== Footer Section ===== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <span>© <span id="year"></span> כל הזכויות שמורות לאתר <strong>ציוןCheck</strong></span>
+    </div>
+  </footer>
+  <!-- Main JavaScript for login page functionality -->
+  <script src="ConnectPage.js"></script>
+</body>
+
+</html>

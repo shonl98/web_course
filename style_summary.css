@@ -1,0 +1,450 @@
+:root { /* Global color and shadow variables */
+  --primary-color: #00796b;
+  --background-color: #dfedee;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #bee9dc;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --select-border: 1px solid #b2dfdb;
+
+}
+
+body { /* Set up body style */
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-header { /* Top sticky header bar */
+  display: flex;
+  align-items: center; 
+  background: var(--primary-color);
+  color: white;
+  padding: 0 1em; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.header-container { /* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo-with-text { /* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.site-logo { /* Set the logo image height */
+  height: 60px;
+}
+
+.site-title { /* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check { /* Highlighted part of the site title ("Check") */
+  color: #cbe4ff;
+  font-weight: bold;
+}
+
+.nav-left ul { /* Layout for the top navigation menu list */
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left a { /* Top menu links style */
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover { /* Change link color on hover */
+  color: #cbe4ff;
+}
+
+.nav-left a.active::after { /* Underline for active nav link */
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #cbe4ff;
+}
+
+.disconnection { /* "Logout" button (התנתק) style */
+  font: inherit;
+  background: none;
+  border: 1px solid white;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.disconnection:hover { /* Hover effect for the logout button */
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.hamburger { /* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) { /* Responsive styles for mobile screens (≤768px) */
+  .hamburger {
+    display: block;
+  }
+
+  .nav-left {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(0.42, 0, 0.58, 1),
+      transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 2000;
+  }
+
+  .nav-left.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scaleY(1);
+  }
+
+  .nav-left ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+}
+
+.footer { /* Footer container at the bottom of the page */
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content { /* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.summary-main { /* Main container for the summary section */
+  padding: 2em;
+  background-color: var(--background-color);
+}
+
+.chart-section {  /* Grid layout for arranging all chart cards */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-flow: dense;
+  gap: 2em;
+  max-width: 1200px;
+  margin: auto;
+  align-items: stretch;
+}
+
+.chart-card {  /* Single chart card with vertical layout and visual styling */
+  position: relative;
+  min-height: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2em;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+}
+
+.canvas-wrapper { /* Wrapper for responsive chart canvas container */
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.chart-canvas-wrapper canvas { /* Ensure canvas fills full space inside wrapper */
+  width: 100%;
+  height: 100%;
+}
+
+.chart-card h3 { /* Title inside chart card */
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1em;
+  color: var(--primary-color);
+}
+
+.summary-chart { /* Container for summary chart content */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 2em;
+}
+
+.course-select-wrapper { /* Wrapper for course dropdown selector */
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.course-select-wrapper select { /* Style for course selection dropdown */
+  padding: 12px;
+  font-size: 16px;
+  border: var(--select-border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: var(--input-background-color);
+}
+
+select:focus { /* Focus style for dropdown element */
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+.weighted-score-display { /* Display for the final weighted score */
+  text-align: center;
+  margin-top: 1.5em;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.styled-select-wrapper { /* Wrapper for styling select element with max width */
+  width: 100%;
+  max-width: 240px;
+  margin-bottom: 1em;
+}
+
+.styled-select { /* Custom styled select dropdown with arrow icon */
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #b2dfdb;
+  border-radius: 6px;
+  background-color: #f9fdfd;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath fill='gray' d='M7 10L0 0h14z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  background-position: left 0.75rem center;
+  padding-left: 2em;
+}
+
+.styled-select:focus { /* Focus style for custom select element */
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+.tags-select-wrapper { /* Wrapper for tag selection buttons */
+  margin-bottom: 1.5em;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tags-select-wrapper label { /* Style for each individual tag */
+  padding: 0.4em 0.8em;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid var(--border-color);
+}
+
+.tags-select-wrapper input[type="checkbox"] { /* Checkbox input for tag selection */
+  margin-left: 0.4em;
+  cursor: pointer;
+}
+
+.summary-strip { /* Colorful animated strip above the charts */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  background: linear-gradient(90deg, #e0f4f1 0%, #b0e1d6 50%, #e0f4f1 100%);
+  animation: move-bg-gradient 6s linear infinite;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  border-radius: 2em;
+  box-shadow: 0 6px 24px 0 rgba(38, 50, 56, 0.08);
+  padding: 1.2em 3em;
+  margin: 2em auto 1.5em auto;
+  max-width: 600px;
+  font-family: "Rubik", sans-serif;
+}
+
+@keyframes move-bg-gradient { /* Animation that slides the background gradient from right to left and back */
+  0% {
+    background-position: 100% 0;
+  }
+
+  50% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.summary-item { /* Center the content of a summary element */
+  text-align: center;
+}
+
+.summary-label { /* Style the label text inside the summary strip */
+  color: #7688a4;
+  font-size: 1em;
+  margin-bottom: 0.3em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.summary-value {  /* Displays the numeric value in large bold font */
+  color: #293861;
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.summary-divider { /* Adds a vertical line between the two summary boxes */
+  width: 1.5px;
+  height: 2.5em;
+  background: #dbeafe;
+  border-radius: 1px;
+  margin: 0 1em;
+}
+
+.score-label { /* Adds spacing and weight to the score description text */
+  margin-top: 1em;
+  font-weight: 500;
+}
+
+.highlight-score { /* Displays the final weighted score in large, colored, centered text */
+  margin-top: 1em;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.highlight-score span { /* Shows the numeric score in extra large dark-blue text */
+  font-size: 2.2rem;
+  color: #293861;
+}
+
+#tag-select { /* Multi-select dropdown for tags */
+  width: 100%;
+  max-width: 300px;
+  padding: 0.8em;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #f9fdfd;
+  direction: rtl;
+  height: 8em;
+}
+
+.custom-multiselect { /* Styled box for selecting multiple tags */
+  border: 1px solid #00796b;
+  border-radius: 8px;
+  background-color: #eefaf8;
+  padding: 0.6em 1em;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-in-out;
+  text-align: right;
+  direction: rtl;
+}
+
+.selected-tags { /* Shows selected tags inside the box */
+  color: #00796b;
+  font-weight: 500;
+  text-align: right;
+}
+
+.checkbox-list { /* Opens a dropdown list with available tags to choose */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 0.5em;
+  margin-top: 0.2em;
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: right;
+}
+
+.checkbox-list label { /* Creates a clickable tag option with text and checkbox */
+  padding: 0.4em;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+}
+
+.checkbox-list input[type="checkbox"] { /* Styles the checkbox inside each tag option */
+  accent-color: #00796b;
+  cursor: pointer;
+}
+
+.hidden{ /* Hides the element from the page */
+  display: none;
+}
+

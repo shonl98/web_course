@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>הקורסים שלי</title>
+    <link href="style_courses.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-Wrapper">
+      <header class="main-header">
+        <div class="header-container">
+          <!-- Hamburger for mobile -->
+          <button class="hamburger" id="hamburger-btn">☰</button>
+
+          <!-- Logo and site title -->
+          <div class="logo-with-text">
+            <img src="./img/logo.png" alt=" ציוןCheck" class="site-logo" />
+            <span class="site-title"
+              >ציון<span class="highlight-check">Check</span>
+            </span>
+          </div>
+
+          <!-- Navigation menu -->
+          <nav class="nav-left" id="nav-menu">
+            <ul>
+              <li><a href="Home_connected.html">דף הבית</a></li>
+              <li>
+                <a href="courses_page.html" class="active">הקורסים שלי</a>
+              </li>
+              <li><a href="summary_page.html">סיכומים</a></li>
+              <li>
+                <a href="Grade_sheet.html">גיליון ציונים</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Logout -->
+          <a href="Index.html" class="disconnection">התנתק</a>
+        </div>
+      </header>
+
+      <!-- Controls Section - search, filters, calculated totals -->
+      <section class="controls">
+        <div class="right-controls">
+          <!-- Add course button & search input -->
+          <button id="add-course">➕ הוסף קורס</button>
+          <input id="search" placeholder="חיפוש קורס..." type="text" />
+
+          <!-- Filters -->
+          <div class="filter-wrapper">
+            <button id="filter-toggle">🔽 סנן</button>
+            <div class="hidden" id="filter-options">
+              <!-- Year filter -->
+              <label>שנים:</label>
+              <div class="custom-multiselect" id="filter-year-dropdown">
+                <div class="selected-tags" id="filter-selected-years">
+                  בחר שנים...
+                </div>
+                <div class="checkbox-list hidden" id="filter-year-options">
+                  <label><input type="checkbox" value="א" /> א</label>
+                  <label><input type="checkbox" value="ב" /> ב</label>
+                  <label><input type="checkbox" value="ג" /> ג</label>
+                  <label><input type="checkbox" value="ד" /> ד</label>
+                </div>
+              </div>
+
+              <!-- Semester filter -->
+              <label>סמסטרים:</label>
+              <div class="custom-multiselect" id="filter-semester-dropdown">
+                <div class="selected-tags" id="filter-selected-semesters">
+                  בחר סמסטרים...
+                </div>
+                <div class="checkbox-list hidden" id="filter-semester-options">
+                  <label><input type="checkbox" value="חורף" /> חורף</label>
+                  <label><input type="checkbox" value="קיץ" /> קיץ</label>
+                  <label><input type="checkbox" value="אביב" /> אביב</label>
+                </div>
+              </div>
+
+              <!-- Tag filter -->
+              <label>תגיות:</label>
+              <div class="custom-multiselect" id="filter-tag-dropdown">
+                <div class="selected-tags" id="filter-selected-tags">
+                  בחר תגיות...
+                </div>
+                <div class="checkbox-list hidden" id="filter-tag-options"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display of total points and average -->
+        <div class="calculated-scores">
+          <div class="score-item">
+            <img alt="סגור" src="img\nakaz.svg" />
+            <span class="align-right">
+              <span id="total-points"></span>
+              <br />
+              <span>נקודות זכות</span>
+            </span>
+          </div>
+          <div class="score-item">
+            <img alt="סגור" src="img\avg.svg" />
+            <span class="align-right">
+              <span id="average-grade"></span>
+              <br />
+              <span>ממוצע משוקלל</span>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main section - course cards and modal form -->
+      <main class="course-grid" id="course-grid">
+        <!-- Modal for adding/editing course -->
+        <div class="modal hidden" id="course-modal">
+          <div class="modal-content">
+            <button class="close-modal">✖</button>
+            <h2>ניהול קורס</h2>
+            <hr class="divider1" />
+
+            <form id="course-form">
+              <div class="grid-2">
+                <label>
+                  <span class="label-title"
+                    >שם קורס<span class="required-star">*</span></span
+                  >
+                  <input id="course-name" required="" type="text" />
+                </label>
+                <div class="nakaz-wrapper">
+                  <label>
+                    <span class="label-title"
+                      >נק"ז<span class="required-star">*</span></span
+                    >
+                    <input
+                      id="credits"
+                      min="0"
+                      required=""
+                      step="0.5"
+                      type="number"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Year, Semester, Grade -->
+              <hr class="divider1" />
+              <div class="grid-3">
+                <label>
+                  <span class="label-title"
+                    >שנה<span class="required-star">*</span></span
+                  >
+                  <select id="year" required="">
+                    <option value="א">א</option>
+                    <option value="ב">ב</option>
+                    <option value="ג">ג</option>
+                    <option value="ד">ד</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="label-title"
+                    >סמסטר<span class="required-star">*</span></span
+                  >
+                  <select id="semester" required="">
+                    <option value="חורף">חורף</option>
+                    <option value="קיץ">קיץ</option>
+                    <option value="אביב">אביב</option>
+                  </select>
+                </label>
+                <label
+                  >ציון
+                  <input id="final-grade" max="100" min="0" type="number" />
+                </label>
+              </div>
+
+              <!-- Tags -->
+              <hr class="divider1" />
+              <label>תגיות</label>
+              <div class="custom-multiselect" id="tag-dropdown">
+                <div class="selected-tags" id="selected-tags">בחר תגיות...</div>
+                <div class="checkbox-list hidden" id="tag-options"></div>
+              </div>
+
+              <!-- Grade components -->
+              <hr class="divider1" />
+              <fieldset>
+                <legend>רכיבי ציון</legend>
+                <div class="components-header">
+                  <button id="add-component" type="button">➕ הוסף רכיב</button>
+                </div>
+                <div id="components-container"></div>
+                <div class="weight-warning hidden" id="weight-warning">
+                  ⚠️ משקל צריך להסתכם ל‑100 %
+                </div>
+              </fieldset>
+
+              <!-- Bonus + binary checkbox -->
+              <hr class="divider1" />
+              <div class="grid-2">
+                <div class="bonus-wrapper">
+                  <label
+                    >בונוס
+                    <input id="bonus" type="number" value="0" min="0" />
+                  </label>
+                </div>
+                <div class="align-left">
+                  <label class="binary-label">
+                    <input id="binary-bonus" type="checkbox" />
+                    האם בינארי
+                  </label>
+                </div>
+              </div>
+
+              <!-- Weighted result and actions -->
+              <strong
+                class="weighted-result hidden"
+                id="weighted-result"
+              ></strong>
+              <div class="actions">
+                <button class="primary" id="save-btn" type="submit">
+                  שמירה
+                </button>
+                <button class="primary" id="delete-btn" type="button">
+                  מחיקה
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-overlay"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <span
+          >© <span id="year1"></span> כל הזכויות שמורות לאתר
+          <strong>ציוןCheck</strong></span
+        >
+      </div>
+    </footer>
+    <script src="courses_page_script.js"></script>
+  </body>
+</html>

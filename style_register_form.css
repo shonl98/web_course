@@ -1,0 +1,331 @@
+:root {/* Global color and shadow variables */
+  --primary-color: #00796b; 
+  --background-color: #dfedee; 
+  --font-weight-label-title: bold;
+  --select-border: 1px solid #b2dfdb;
+  --input-background-color: #f9fdfd;
+  --shaddow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.03), 0 8px 16px rgba(0, 0, 0, 0.025),
+    0 16px 32px rgba(0, 0, 0, 0.02);
+}
+
+* {/* Reset all box model and spacing for elements */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+body {/* Set up body style */
+  font-family: "Rubik", sans-serif;
+  direction: rtl;
+  background: var(--background-color);
+  color: #000000;
+}
+
+.container {/* Main form wrapper */
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.logo {/* Logo image at the top */
+  display: block;
+  margin: 0 auto 20px;
+  width: 100px;
+}
+
+h1 {/* Main page headline */
+  text-align: center;
+  color: #000000;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.form-group {/* Single form group block */
+  margin-bottom: 20px;
+}
+
+label {/* Label for each input */
+  display: block;
+  margin-bottom: 6px;
+  font-weight: var(--font-weight-label-title);
+}
+
+.required-star {/* Asterisk for required fields */
+  color: red;
+  margin-right: 4px;
+}
+
+input,
+select {/* Style for all input and select fields */
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: var(--select-border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: var(--input-background-color);
+}
+
+input:focus,
+select:focus {/* Focused input/select field */
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+input[type="checkbox"] {/* Checkbox alignment & style */
+  width: auto;
+  height: auto;
+  accent-color: #4c8cd8;
+}
+
+.terms-label {/* Terms label  */
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: bold;
+  font-size: 1rem;
+  direction: rtl;
+}
+
+button {/* Main button style */
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"] {/* Submit button fills width */
+  width: 100%;
+}
+
+button:hover {/* Button hover effect */
+  background-color: #004d40;
+}
+
+.modal {/* Modal (popup) wrapper */
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  margin: 2vh;
+}
+
+.modal.hidden { /* Hidden state for modal */
+  display: none;
+}
+
+.modal-overlay { /* Modal overlay (background) */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {/* Modal content panel */
+  position: relative;
+  z-index: 2100;
+  background: #fff;
+  border-radius: 10px;
+  padding: 2em;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  direction: rtl;
+}
+
+.close-modal {/* X (close) button for modal */
+  position: absolute;
+  top: 10px;
+  left: 10px; 
+  right: auto;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #b1b1b1; /* אדום נעים */
+  line-height: 1;
+  z-index: 9999;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-modal:hover {
+  background: none; 
+  color: #824141; 
+}
+
+a {/* Link style */
+  color: #00796b;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+select {/* Custom select dropdown icon & padding */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath fill='gray' d='M7 10L0 0h14z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  padding-left: 2em;
+  background-position: left 0.75rem center;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.X-button-div {/* Aligns X button to left in modal */
+  text-align: left; 
+  direction: ltr;
+}
+
+.components-header {/* Header row in modal with close button */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6em;
+  flex-direction: row-reverse; 
+}
+
+.main-header {/* Top sticky header bar */
+  display: flex;
+  align-items: center; 
+  background: var(--primary-color);
+  color: white;
+  padding: 0 1em; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shaddow);
+}
+
+.nav-left a:hover {/* Change link color on hover */
+  color: #cbe4ff;
+}
+
+.header-container {/* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo-with-text {/* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.site-logo {/* Set the logo image height */
+  height: 60px;
+}
+
+.site-title {/* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check {/* Highlighted part of the site title ("Check") */
+  color: #cbe4ff;
+  font-weight: bold;
+}
+
+.nav-left ul {/* Layout for the top navigation menu list */
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left a {/* Top menu links style */
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  transition: color 0.3s ease;
+}
+
+.hamburger { /* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#termsText {/* Pre-line & spacing for terms in modal */
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+/* Footer container at the bottom of the page */
+.footer {
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content {/* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+
+.popup-overlay {/* Overlay for popup modal */
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+ 
+.hidden{/* Utility class to hide elements */
+  display: none;
+}
+.popup-content {/* Popup panel content */
+  background: white;
+  padding: 2em;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 320px;
+  animation: popupIn 0.5s ease-out;
+}
+
+.popup-content p {
+  margin-top: 1em;
+  font-size: 1.1rem;
+}
+
+/* Popup entrance animation */
+@keyframes popupIn {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

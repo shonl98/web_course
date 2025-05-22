@@ -1,0 +1,358 @@
+:root { /* Global color and shadow variables */
+  --primary-light: #d9e7f8;
+  --border-color: #cce0f5;
+  --primary-color: #00796b; 
+  --background-color: #dfedee; 
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.03), 0 8px 16px rgba(0, 0, 0, 0.025),
+    0 16px 32px rgba(0, 0, 0, 0.02);
+}
+
+body { /* Set up body style */
+  font-family: "Rubik", sans-serif;
+  background: var(--background-color);
+  direction: rtl;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-Wrapper { /* Wrapper for full page layout */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-header { /* Top sticky header bar */
+  display: flex;
+  align-items: center; 
+  background: var(--primary-color);
+  color: white;
+  padding: 0 1em; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.header-container { /* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo-with-text { /* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.site-logo { /* Set the logo image height */
+  height: 60px;
+}
+
+.site-title { /* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check { /* Highlighted part of the site title ("Check") */
+  color: #cbe4ff;
+  font-weight: bold;
+}
+
+.nav-left ul { /* Layout for the top navigation menu list */
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left a { /* Top menu links style */
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover { /* Change link color on hover */
+  color: #cbe4ff;
+}
+
+.nav-left a.active::after { /* Underline for active nav link */
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #cbe4ff;
+}
+
+.disconnection { /* "Logout" button (התנתק) style */
+  font: inherit;
+  background: none;
+  border: 1px solid white;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.disconnection:hover { /* Hover effect for the logout button */
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.hamburger { /* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.grades-container { /* Container for the main grades section */
+  padding: 2em;
+}
+
+.student-info { /* Student information card at the top of the page */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em 2em;
+  background: linear-gradient(to left, #d4f3eb, #ffffff);
+  padding: 1.2em 2em;
+  margin-bottom: 2em;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.buttons { /* Layout container for the buttons section */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.primary { /* Primary action button - edit button  */
+  margin-top: 1em;
+  margin-right: 2em;
+  background: #00796b;
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.primary:hover { /* Hover effect for edit button */
+  background: #004d40;
+}
+
+.print-button { /* Styles the print button */
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 0.7em;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.print-button:hover { /* Hover effect for the print button */
+  background: #f4f4f4;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.icon { /* Set the size of the icon inside print button */
+  width: 24px;
+  height: 24px;
+}
+
+.wrapper-1 { /* Wrapper for grouping elements side by side */
+  display: flex;
+  align-items: center;
+}
+
+.filter-controls { /* Container for the filter section */
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-left: auto;
+  background: #cbe6e5;
+  border: 1px solid #b1bebb;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.filter-controls select { /* Style for dropdown elements inside the filter section */
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+#toggle-edit { /* Spacing below the edit button */
+  margin-bottom: 1em;
+}
+
+table { /* Style for the grades table */
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td { /* Table cells: both header (th)and data (td) */
+  padding: 0.75em; 
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+
+}
+
+th { /* Table header cells only */
+  background: #cbe6e5;
+  font-weight: bold;
+}
+
+input { /* Style for input fields */
+  border: none;
+  background: none;
+  font: inherit;
+  width: 100%;
+  text-align: center;
+}
+
+.edit-mode input { /* Style for input fields when edit mode is active */
+  border: 1px solid #ccc;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 0.4em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer { /* Footer container at the bottom of the page */
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content { /* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+@media print { /* Hide header, footer, and buttons when printing the page */
+  .buttons,
+  .main-header,
+  .footer {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) { /* Responsive styles for mobile screens (≤768px) */
+  .hamburger {
+    display: block;
+  }
+
+  .nav-left {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(0.42, 0, 0.58, 1),
+      transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 2000;
+  }
+
+  .nav-left.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scaleY(1);
+  }
+
+  .nav-left ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+    .primary {
+    margin-top: 1em;
+    margin-right: 0em;
+  }
+  .student-info {
+    flex-direction: column;
+    padding: 1em;
+    font-size: 0.95rem;
+  }
+
+  .grades-container {
+    padding: 1em;
+
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 0.5em;
+  }
+
+  input {
+    font-size: 0.9rem;
+  }
+
+  .buttons {
+    flex-direction: column-reverse;
+  }
+
+  .wrapper-1 {
+    flex-direction: column;
+  }
+
+  .filter-controls {
+    margin-top: 1em;
+    flex-direction: column;
+    width: 80vw;
+  }
+
+  .print-button {
+    width: 87vw;
+  }
+
+  #toggle-edit {
+    width: 87vw;
+  }
+}

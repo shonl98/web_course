@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>גיליון ציונים</title>
+    <link href="Gradesheet.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="page-Wrapper">
+      <header class="main-header">
+        <div class="header-container">
+          <!-- Hamburger menu for mobile -->
+          <button class="hamburger" id="hamburger-btn">☰</button>
+
+          <!-- Logo and site name -->
+          <div class="logo-with-text">
+            <img src="./img/logo.png" alt=" ציוןCheck" class="site-logo" />
+            <span class="site-title"
+              >ציון<span class="highlight-check">Check</span>
+            </span>
+          </div>
+
+          <!-- Navigation menu -->
+          <nav class="nav-left" id="nav-menu">
+            <ul>
+              <li><a href="Home_connected.html">דף הבית</a></li>
+              <li>
+                <a href="courses_page.html">הקורסים שלי</a>
+              </li>
+              <li><a href="summary_page.html">סיכומים</a></li>
+              <li>
+                <a href="Grade_sheet.html" class="active">גיליון ציונים</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Logout -->
+          <a href="Index.html" class="disconnection">התנתק</a>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="grades-container">
+
+        <!-- Student details -->
+        <section class="student-info" id="student-info">
+          <div><strong>שם:</strong> <span id="fname">אלון</span></div>
+          <div><strong>שם משפחה:</strong> <span id="lname">כהן</span></div>
+          <div>
+            <strong>מוסד לימודים:</strong>
+            <span id="inst">אוניברסיטת תל אביב</span>
+          </div>
+          <div><strong>חוג:</strong> <span id="dept">מדעי המחשב</span></div>
+          <div><strong>שנת התחלה:</strong> <span id="start">2023</span></div>
+        </section>
+
+        <!-- Controls - filters, edit button, print button -->
+        <div class="buttons">
+          <div class="wrapper-1">
+
+            <!-- Year & semester filters -->
+            <div class="filter-controls">
+              <label for="שנה">שנה</label>
+              <select id="yearFilter">
+                <option value="הכל">הכל</option>
+                <option value="א">א</option>
+                <option value="ב">ב</option>
+                <option value="ג">ג</option>
+                <option value="ד">ד</option>
+              </select>
+
+              <label for="שנה">סמסטר</label>
+              <select id="semesterFilter">
+                <option value="הכל">הכל</option>
+                <option value="חורף">חורף</option>
+                <option value="אביב">אביב</option>
+                <option value="קיץ">קיץ</option>
+              </select>
+            </div>
+
+            <!-- Toggle edit mode -->
+            <button id="toggle-edit" class="primary">ערוך תעודה</button>
+          </div>
+
+          <!-- Print button -->
+          <button class="print-button" onclick="window.print()">
+            <img class="icon" src="img\print.svg" alt="הדפס" />
+          </button>
+        </div>
+
+        <!-- Grade table -->
+        <table id="grades-table">
+          <thead>
+            <tr>
+              <th>קורס</th>
+              <th>נק"ז</th>
+              <th>ציון</th>
+            </tr>
+          </thead>
+          <tbody id="grades-body"></tbody>
+          <tfoot>
+            <tr>
+              <td><strong>סכום נק"ז / ממוצע משוקלל</strong></td>
+              <td id="total-credits">--</td>
+              <td id="weighted-average">--</td>
+            </tr>
+          </tfoot>
+        </table>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <span
+            >© <span id="year"></span> כל הזכויות שמורות לאתר
+            <strong>ציוןCheck</strong></span
+          >
+        </div>
+      </footer>
+    </div>
+    <script src="Gradesheet.js"></script>
+  </body>
+</html>

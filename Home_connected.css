@@ -1,0 +1,490 @@
+:root { /* Global color and shadow variables */
+  --primary-light: #d9e7f8;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #cce0f5;
+  --tag-bg: #e1effc;
+  --modal-animation: fade-in 0.3s ease-out;
+  --tag-bg: #dce6f2;
+  --background-color: #dfedee;
+  --primary-color: #00796b;
+  --highlight-color: #cbe4ff;
+  --input-background-color: #f9fdfd;
+}
+
+body {/* Set up body style */
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+}
+
+.main-header {/* Top sticky header bar */
+  display: flex;
+  align-items: center;
+  background: var(--primary-color);
+  color: white;
+  padding: 0 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shaddow);
+}
+
+.header-container {/* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* logo*/
+
+.logo-with-text { /* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.site-logo { /* Set the logo image height */
+  height: 60px;
+}
+
+.site-title { /* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check {/* Highlighted part of the site title ("Check") */
+  color: #cbe4ff;
+  font-weight: bold;
+}
+
+.logo-section { /* Section for logo + site name together */
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-left a {/* Top menu links style */
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-left ul {/* Layout for the top navigation menu list */
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left a:hover {/* Change link color on hover */
+  color: #cbe4ff;
+}
+
+.nav-left a.active::after {/* Underline for active nav link */
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #cbe4ff;
+}
+
+.disconnection {/* "Logout" button (התנתקות) style */
+  font: inherit;
+  background: none;
+  border: 1px solid white;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.disconnection:hover {/* Hover effect for the logout button */
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.hamburger { /* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+.info-block {/* Info block section for main page */
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0em;
+  border-radius: 12px;
+  padding: 0.5em 1em;
+  margin: 4em auto;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  text-align: center;
+}
+
+.info-sections { /* Section block for info + features */
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  border-radius: 12px;
+  padding: 0.8em 1em;
+  margin: 4em auto;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  text-align: center;
+}
+
+.text-content {/* Text column for content */
+  flex: 1;
+  text-align: right;
+}
+
+.image-content {/* Column for images/illustrations */
+  flex: 1;
+  text-align: center;
+}
+
+.image-content img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.mobile-spacer {/* Spacer for mobile menu toggle */
+  display: none;
+}
+
+input,
+select {
+  /* Style for all input and select fields */
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+input:focus,
+select:focus {
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+/* ===== Main content area ===== */
+.homepage-main {
+  text-align: center;
+  padding: 3em 1em;
+  background-color: var(--background-color);
+}
+
+.main-title {/* Main title style */
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-description { /* Main page description style */
+  font-size: 1.4rem;
+  max-width: 600px;
+  margin: 0 auto;
+  direction: rtl;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* Why Choose ציוןCheck section */
+.why-check {
+  flex-direction: column;
+  text-align: center;
+}
+
+.why-check h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  gap: 0em;
+}
+
+
+.why-list {/* List of advantages/features */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  border-radius: 12px;
+  padding: 1em 1em;
+  max-width: 1100px;
+  gap: 1.2em;
+  align-items: flex-end;
+}
+
+.why-icon {/* Advantage icon style */
+  font-size: 1.4rem;
+  color: #00c853;
+  text-align: center;
+}
+
+.why-text {/* Advantage text style */
+  font-size: 1.4rem;
+  color: var(--text-color);
+  text-align: right;
+  padding-right: 1vw;
+}
+
+.why-item {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+
+/* ===== How it works section ===== */
+.how-it-works {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  margin: 4em auto;
+  padding: 0.5em 1em;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.how-it-works h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  gap: 0em;
+}
+
+.steps {/* Steps layout for "how it works" */
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.step h3 {/* Step headline */
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 0em;
+  gap: 0em;
+}
+
+.step {/* Step card */
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.step img {
+  max-width: 100px;
+}
+
+/* ===== Testimonials/Recommendations section ===== */
+
+.StudentS {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  margin: 4em auto;
+  padding: 0.5em 1em;
+  max-width: 1100px;
+  text-align: center;
+  font-size: 1.4rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+}
+
+.StudentS h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  gap: 0em;
+}
+
+
+.recommendations {/* Recommendations block */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 0.5em 1em;
+  max-width: 1100px;
+  gap: 1.2em;
+  margin-top: 0em;
+}
+
+
+/* Single testimonial layout */
+.testimonial {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  text-align: right;
+  font-size: 1.4rem;
+}
+
+.avatar {/* Avatar image in testimonials */
+  width: 100px;
+  height: 100px;
+  border-radius: 70%;
+  object-fit: cover;
+}
+
+
+.footer { /* Footer container at the bottom of the page */
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content {/* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+/* ========== Responsive styles ========== */
+@media (max-width: 1060px) {
+
+  .info-block { /* Info block in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .info-sections {  /* Info sections in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .why-list {/* Advantages/features in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .text-content,
+  .image-content {
+    flex: unset;
+    width: 100%;
+  }
+
+  .hamburger {/* Show hamburger icon on mobile */
+    display: flex;
+  }
+
+  .nav-left {/* Mobile nav menu panel */
+    display: block;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(0.42, 0, 0.58, 1),
+      transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 2000;
+  }
+
+  .nav-left a { /* Nav links on mobile */
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+}
+
+/* Responsive styles for mobile screens (≤768px) */
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-left {/* Mobile nav menu panel */
+    display: block;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(0.42, 0, 0.58, 1),
+      transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 2000;
+  }
+
+  .nav-left a { /* Nav links on mobile */
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  .nav-left.active { 
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scaleY(1);
+  }
+
+  .nav-left ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .info-sections { /* Info section in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .why-list {/* Advantages/features in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}

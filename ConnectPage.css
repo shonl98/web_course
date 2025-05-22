@@ -1,0 +1,279 @@
+
+:root {/* Global color and shadow variables */
+  --primary-light: #d9e7f8;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #cce0f5;
+  --tag-bg: #e1effc;
+  --modal-animation: fade-in 0.3s ease-out;
+  --tag-bg: #dce6f2;
+  --background-color: #dfedee;
+  --primary-color: #00796b;
+  --highlight-color: #cbe4ff;
+  --input-background-color: #f9fdfd;
+}
+
+body {/* Set up body style */
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+}
+
+.main-header { /* Top sticky header bar */
+  display: flex;
+  align-items: center;
+  background: var(--primary-color);
+  color: white;
+  padding: 0 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.header-container {/* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* logo*/
+
+.logo-with-text {/* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.site-logo {/* Set the logo image height */
+  height: 60px;
+}
+
+.site-title { /* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check {/* Highlighted part of the site title ("Check") */
+  color: #cbe4ff;
+  font-weight: bold;
+}
+
+.logo-section {/* Section for logo + site name together */
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-left ul { /* Layout for the top navigation menu list */
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left a {/* Top menu links style */
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;  
+}
+
+
+.nav-left a:hover {/* Change link color on hover */
+  color: #cbe4ff;
+}
+
+.nav-left a.active::after {/* Underline for active nav link */
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #cbe4ff;
+}
+
+.nav-left ul li:first-child a.active {
+  font-weight: bold;
+}
+
+/* ===== Login form block ===== */
+.login-container {
+  max-width: 400px;
+  margin: 4em auto;
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h1 {/* Login page headline */
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+
+/* Single form group block */
+.form-group {
+  margin-bottom: 1.5em;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f2f6f9;
+  font-size: 1rem;
+}
+
+.login-btn {/* Login button style */
+  width: 100%;
+  background-color: white;
+  color: #00796b;
+  border: 1px solid #00796b;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #e6f6f4;
+}
+
+.forgot {/* Forgot password link */
+  display: block;
+  margin-top: 1em;
+  color: #00796b;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+
+.input-error-bubble {/* Error message below inputs */
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 0.3em;
+}
+
+
+.hamburger {/* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+.footer { /* Footer container at the bottom of the page */
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content { /* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.mobile-spacer {/* Mobile spacer for nav/header layout */
+  display: block;
+  justify-content: left;
+}
+
+/* ========== Responsive styles ========== */
+@media (max-width: 768px) { /* Responsive styles for mobile screens (≤768px) */
+
+  .hamburger {/* Show hamburger icon on mobile */
+    display: flex;
+  }
+
+
+  .logo-with-text {/* Center the logo and site title horizontally on mobile */
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .header-container {/* Center header content horizontally on mobile */
+    justify-content: center;
+  }
+
+  .nav-left { /* Mobile nav menu panel */
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(.42, 0, .58, 1), transform 0.35s cubic-bezier(.42, 0, .58, 1);
+    z-index: 2000;
+  }
+
+
+  .nav-left.active {/* Show nav menu when active */
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scaleY(1);
+  }
+
+  .nav-left ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .info-block {/* Stack info sections vertically, image below text */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .text-content,
+  .image-content {/* Set both text and image to full width on mobile */
+    flex: unset;
+    width: 100%;
+  }
+
+  .nav-left ul li {/* Add top border and spacing for each nav item */
+    padding: 1em;
+    border-top: 1px solid #417bbf;
+  }
+
+  .mobile-spacer {/* Spacer for header layout on mobile */
+    display: block;
+    width: 60px;
+  }
+}

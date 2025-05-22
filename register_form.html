@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>טופס הרשמה</title>
+    <link rel="stylesheet" href="style_register_form.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- Animation library -->
+  </head>
+
+  <body>
+    <header class="main-header">
+      <div class="header-container">
+        <!-- Hamburger menu for mobile -->
+        <button class="hamburger" id="hamburger-btn">☰</button>
+
+        <!-- Logo and site name -->
+        <div class="logo-with-text">
+          <img src="./img/logo.png" alt="ציוןCheck" class="site-logo" />
+          <span class="site-title"
+            >ציון<span class="highlight-check">Check</span></span
+          >
+        </div>
+
+        <!-- Navigation menu -->
+        <nav class="nav-left" id="nav-menu">
+          <ul>
+            <li><a href="Index.html">דף הבית</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Animation popup -->
+    <div class="popup-overlay hidden" id="popup">
+      <div class="popup-content">
+        <lottie-player
+          id="lottie"
+          src="img\resigter succsees.json"
+          background="transparent"
+          speed="1"
+          style="width: 200px; height: 200px"
+          direction="1"
+          keepLastFrame
+        ></lottie-player>
+        <p>הפעולה הושלמה בהצלחה</p>
+      </div>
+    </div>
+
+    <!-- Registration form -->
+    <div class="container">
+      <img src="./img/logo.png" alt="לוגו האתר" class="logo" />
+      <h1>הרשמה לסטודנטים</h1>
+
+      <form id="studentForm">
+        <div class="form-group">
+          <!-- First Name -->
+          <label for="firstName"
+            >שם פרטי: <span class="required-star">*</span></label
+          >
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+          <label for="lastName"
+            >שם משפחה: <span class="required-star">*</span></label
+          >
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">מייל: <span class="required-star">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="example@gmail.com"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password"
+            >סיסמה: <span class="required-star">*</span></label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            minlength="6"
+          />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword"
+            >אימות סיסמה: <span class="required-star">*</span></label
+          >
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            minlength="6"
+          />
+        </div>
+
+        <!-- Academic Institution -->
+        <div class="form-group">
+          <label for="university">מוסד לימודים:</label>
+          <select id="university" name="university">
+            <option value="">בחר מוסד לימודים</option>
+          </select>
+        </div>
+
+        <!-- Major -->
+        <div class="form-group">
+          <label for="major">חוג לימוד / מסלול:</label>
+          <select id="major" name="major">
+            <option value="">בחר חוג לימוד</option>
+          </select>
+        </div>
+
+        <!-- Start Year -->
+        <div class="form-group">
+          <label for="startYear">שנת התחלת לימודים:</label>
+          <select id="startYear" name="startYear">
+            <option value="">בחר שנה</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+
+        <!-- Terms -->
+        <div class="form-group checkbox-group">
+          <label class="terms-label" dir="rtl">
+            <input
+              title="יש לקרוא את תנאי השימוש לפני אישור"
+              type="checkbox"
+              id="terms"
+              name="terms"
+              disabled
+            />
+            <span>
+              אני מאשר/ת את
+              <a href="#" id="openTerms">תנאי השימוש ומדיניות הפרטיות</a>
+              <span class="required-star">*</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">הירשם</button>
+      </form>
+    </div>
+
+    <!-- Popup of terms of use -->
+    <div id="termsModal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeModal()"></div>
+      <div class="modal-content">
+        <span class="X-button-div"
+          ><button class="close-modal" onclick="closeModal()">✖</button></span
+        >
+        <h2>תנאי שימוש ומדיניות פרטיות</h2>
+        <p id="termsText">טוען תוכן...</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <span
+          >© <span id="year"></span> כל הזכויות שמורות לאתר
+          <strong>ציוןCheck</strong></span
+        >
+      </div>
+    </footer>
+
+    <script src="register_form.js"></script>
+  </body>
+</html>

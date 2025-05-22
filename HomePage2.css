@@ -1,0 +1,485 @@
+:root {/* Global color and shadow variables */
+  --primary-light: #d9e7f8;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #cce0f5;
+  --tag-bg: #e1effc;
+  --modal-animation: fade-in 0.3s ease-out;
+  --tag-bg: #dce6f2;
+  --background-color: #dfedee;
+  --primary-color: #00796b;
+  --highlight-color: #cbe4ff;
+  --input-background-color: #f9fdfd;
+}
+
+body {/* Set up body style */
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+}
+
+.main-header {/* Top sticky header bar */
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75em 1.5em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {/* Container inside header: logo, nav, logout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.right-header {/* Header right-side: nav, buttons */
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+.hamburger { /* Hamburger menu icon for small screens */
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* logo*/
+
+.logo-with-text { /* Align logo image and site name side by side */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.site-logo {/* Set the logo image height */
+  height: 60px;
+}
+
+.site-title { /* Style for the site title text next to the logo */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.highlight-check {/* Highlighted part of the site title ("Check") */
+  color: var(--highlight-color);
+}
+
+.logo-section {/* Section for logo + site name together */
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+
+.left-login {/* Login area (left side) */
+  display: flex;
+  gap: 0.9em;
+  align-items: left;
+}
+
+.input-error-bubble {/* Error message bubble for input fields */
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  top: 105%;
+  width: fit-content;
+  min-width: 120px;
+  max-width: 230px;
+  background: #fff4e5;
+  color: #a94442;
+  border: 1px solid #ffa95d;
+  border-radius: 10px;
+  padding: 4px 12px;
+  font-size: 0.93em;
+  z-index: 10;
+  box-shadow: 0 2px 8px #00000012;
+  white-space: pre-line;
+  text-align: right;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+
+.info-block {/* Info block section for main page */
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0em;
+  border-radius: 12px;
+  padding: 0.5em 1em;
+  margin: 4em auto;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  text-align: center;
+}
+
+.info-sections {/* Section block for info + features */
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  border-radius: 12px;
+  padding: 0.8em 1em;
+  margin: 4em auto;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  text-align: center;
+}
+
+.text-content {/* Text column for content */
+  flex: 1;
+  text-align: right;
+}
+
+.image-content { /* Column for images/illustrations */
+  flex: 1;
+  text-align: center;
+}
+
+.image-content img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.mobile-spacer {/* Spacer for mobile menu toggle */
+  display: none;
+}
+
+.nav-left.active {/* Active state for mobile menu */
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scaleY(1);
+}
+
+.nav-left ul {/* Layout for the top navigation menu list */
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-left ul li {/* Navigation list item styling */
+  padding: 1em;
+  border-top: 1px solid #417bbf;
+}
+
+.nav-left a:hover { /* Change link color on hover */
+  color: #cbe4ff;
+}
+
+
+.login-button {/* Login button */
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #e6f6f4;
+}
+
+input,
+select {/* Style for all input and select fields */
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+input:focus,
+select:focus {
+  border-color: #00796b;
+  outline: none;
+  background-color: #eefaf8;
+}
+
+/* ===== Main content area ===== */
+
+.homepage-main {
+  text-align: center;
+  padding: 3em 1em;
+  background-color: var(--background-color);
+}
+
+.main-title { /* Main title style */
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-description {/* Main page description style */
+  font-size: 1.4rem;
+  max-width: 600px;
+  margin: 0 auto;
+  direction: rtl;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* Why Choose ציוןCheck section */
+.why-check {
+  flex-direction: column;
+  text-align: center;
+}
+
+.why-check h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  gap: 0em;
+}
+
+
+.why-list {/* List of advantages/features */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  border-radius: 12px;
+  padding: 1em 1em;
+  max-width: 1100px;
+  gap: 1.2em;
+  align-items: flex-end;
+}
+
+.why-item {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.why-icon {/* Advantage icon style */
+  font-size: 1.4rem;
+  color: #00c853;
+  text-align: center;
+}
+
+.why-text {/* Advantage text style */
+  font-size: 1.4rem;
+  color: var(--text-color);
+  text-align: right;
+  padding-right: 1vw;
+}
+
+/* ===== How it works section ===== */
+.how-it-works {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  margin: 4em auto;
+  padding: 0.5em 1em;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.how-it-works h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  gap: 0em;
+}
+
+.steps {/* Steps layout for "how it works" */
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.step h3 {/* Step headline */
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 0em;
+  gap: 0em;
+}
+
+.step {/* Step card */
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.step img {
+  max-width: 100px;
+}
+
+/* ===== Testimonials/Recommendations section ===== */
+
+.StudentS {
+  background-color: rgba(255, 255, 255, 0.5);
+  /* לבן שקוף */
+  border-radius: 12px;
+  margin: 4em auto;
+  padding: 0.5em 1em;
+  max-width: 1100px;
+  text-align: center;
+  font-size: 1.4rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+}
+
+.StudentS h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
+  gap: 0em;
+}
+
+.recommendations {/* Recommendations block */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 0.5em 1em;
+  max-width: 1100px;
+  gap: 1.2em;
+  margin-top: 0em;
+}
+
+
+/* Single testimonial layout */
+.testimonial { 
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  text-align: right;
+  font-size: 1.4rem;
+}
+
+.avatar {/* Avatar image in testimonials */
+  width: 100px;
+  height: 100px;
+  border-radius: 70%;
+  object-fit: cover;
+}
+
+
+.footer { /* Footer container at the bottom of the page */
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.footer-content { /* Layout for content inside the footer */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.signup-button {/* Signup button style */
+  font: inherit;
+  background: none;
+  border: 1px solid white;
+  padding: 0.3em 2em;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.signup-button:hover { /* Signup button hover style */
+  background-color: white;
+  color: var(--primary-color);
+}
+
+/* ========== Responsive styles ========== */
+
+@media (max-width: 1060px) {
+  
+  .mobile-spacer {/* Spacer for mobile menu */
+    display: block;
+    width: 60px;
+  }
+
+  .hamburger {  /* Show hamburger icon on mobile */
+    display: flex;
+  }
+
+  .left-login { /* Hide login area on mobile */
+    display: none;
+  }
+
+  .signup-button {/* Hide signup button on mobile */
+    display: none;
+  }
+
+  .nav-left {  /* Mobile nav menu panel */
+    display: block;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background: #00564c;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px) scaleY(0.95);
+    transition: opacity 0.35s cubic-bezier(0.42, 0, 0.58, 1),
+      transform 0.35s cubic-bezier(0.42, 0, 0.58, 1);
+    z-index: 2000;
+  }
+
+  .nav-left a { /* Nav links on mobile */
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  .info-sections {  /* Info sections in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .why-list {  /* Advantages/features in one column */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+}
